@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {ITodo} from '../app.component';
 
 @Component({
@@ -12,9 +12,18 @@ export class TodoComponent implements OnInit, ITodo {
 
   @Input() completed: boolean;
 
+  @Output() deleted = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  completeThis() {
+    this.completed = true;
+  }
+
+  deleteThis() {
+    this.deleted.emit();
+  }
 }

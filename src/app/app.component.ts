@@ -31,4 +31,17 @@ export class AppComponent {
       completed: false
     }
   ]
+
+  addTask(tasky: string) {
+    let adder = <HTMLInputElement>document.getElementById("addy");
+    if(tasky != "") {
+      this.todos = [...this.todos, {task: tasky, completed: false}];
+      adder.value = "";
+    }
+  }
+
+  deleteTodo(indy : number) {
+    console.log(indy);
+    this.todos = [...(this.todos.slice(0, indy)), ...(this.todos.slice(indy + 1, this.todos.length))];
+  }
 }

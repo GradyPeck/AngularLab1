@@ -1,11 +1,12 @@
 <h1>Todo List</h1>
 <h3>A Place to Store Your Todos</h3>
-<input type="text" placeholder="Filter your to-dos">
-<p *ngFor="let todo of todos">
+<input [(ngModel)]="filterer" type="text" placeholder="Filter your to-dos">
+<p *ngFor="let todo of todos | myFilter : filterer; let i=index">
   <app-todo
   [task]="todo.task"
   [completed]="todo.completed"
+  (deleted)="deleteTodo(i)"
   ></app-todo>
 </p>
-<input type="text" placeholder="Add your to-do">
-<button>Add</button>
+<input id="addy" [(ngModel)]="taskAdder" type="text" placeholder="Add your to-do">
+<button (click)="addTask(taskAdder)">Add</button>
