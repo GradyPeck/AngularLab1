@@ -32,11 +32,13 @@ export class AppComponent {
     }
   ]
 
-  addTask(tasky: string) {
-    let adder = <HTMLInputElement>document.getElementById("addy");
-    if(tasky != "") {
-      this.todos = [...this.todos, {task: tasky, completed: false}];
-      adder.value = "";
+  tasky : string = '';
+
+  addTask() {
+ //   let adder = <HTMLInputElement>document.getElementById("addy");
+    if(this.tasky != "") {
+      this.todos = [...this.todos, {task: this.tasky, completed: false}];
+      this.tasky = "";
     }
   }
 

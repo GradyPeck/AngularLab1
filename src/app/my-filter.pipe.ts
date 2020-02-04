@@ -6,9 +6,14 @@ import { stringify } from 'querystring';
   name: 'myFilter'
 })
 export class MyFilterPipe implements PipeTransform {
-  transform(value: any, ...args: any[]): any {
+  transform(value: any, filterString : string): any {
+
     //console.log(value);
-    let filterString = args[0];
+
+    if ( !filterString ) {
+      return value;
+    }
+
     let todos : ITodo[] = [];
     for(let vally of value) {
       if(vally.task.includes(filterString)){
